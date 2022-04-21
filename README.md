@@ -1,3 +1,0 @@
-# Bitcoin-Raitings
-
-Test
