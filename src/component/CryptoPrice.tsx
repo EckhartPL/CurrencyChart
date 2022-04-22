@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CryptoData } from "../types/crypto-data";
+import { CryptoChart } from "./CryptoChar";
 import { CryptoPriceOfOnePair } from "./CryptoPriceOfOnePair";
 
 export const CryptoPrice = () => {
@@ -10,7 +11,6 @@ export const CryptoPrice = () => {
         (async () => {
             const res = await fetch('https://api2.binance.com/api/v3/ticker/24hr');
             setData(await res.json());
-            console.log(data);
         })();
     }, [])
 
@@ -32,6 +32,9 @@ export const CryptoPrice = () => {
             </label>
             {
                 pair && <CryptoPriceOfOnePair onePair={data.find(one => one.symbol === pair) as CryptoData}/>
+            }
+            {
+                <CryptoChart data={data}/>
             }
         </>
     }
