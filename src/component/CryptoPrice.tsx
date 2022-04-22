@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CryptoData } from "../types/crypto-data";
 import { CryptoChart } from "./CryptoChar";
 import { CryptoPriceOfOnePair } from "./CryptoPriceOfOnePair";
+import { Loading } from "react-loading-dot";
 
 export const CryptoPrice = () => {
     const [data, setData] = useState<CryptoData[] | null>(null);
@@ -17,7 +18,7 @@ export const CryptoPrice = () => {
     }, [])
 
     if (data === null) {
-        return <p style={{ fontSize: '40px', color: 'gray' }}>Loading cryptocurrencies.</p>
+        return <p style={{ fontSize: '40px', color: 'gray' }}><Loading/>Loading cryptocurrencies.</p>
     } else {
         return <>
             <label>

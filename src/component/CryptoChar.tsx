@@ -57,6 +57,12 @@ export const CryptoChart = (props: Props) => {
                         text: 'Currency weighted price',
                     },
                     legend: {
+                        labels: {
+                            color: 'blue',
+                            font: {
+                                size: 18
+                            }
+                        },
                         display: true,
                         position: 'right',
                     }
