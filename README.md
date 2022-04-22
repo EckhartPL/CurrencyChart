@@ -1,2 +1,0 @@
-# CurrencyChart
-Currency live chart.
