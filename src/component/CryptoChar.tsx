@@ -29,7 +29,6 @@ interface Props {
 }
 
 export const CryptoChart = (props: Props) => {
-
     const state = {
         labels: props.data.map(one => one.symbol),
         datasets: [
