@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import { BitcoinPrice } from './component/BitcoinPrice';
+import { CryptoPrice } from './component/CryptoPrice';
 
 export const App = () => {
-  return <>
-    <BitcoinPrice/>
-  </>
+  return <div className='App'>
+    <CryptoPrice />
+  </div>
 }
