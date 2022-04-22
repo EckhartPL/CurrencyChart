@@ -11,6 +11,8 @@ import {
     Tooltip,
     Legend,
     } from 'chart.js';
+
+    import './Crypto.css'
     
     ChartJS.register(
     CategoryScale,
@@ -27,8 +29,6 @@ interface Props {
 }
 
 export const CryptoChart = (props: Props) => {
-    console.log(props.data.map(one => Number(one.weightedAvgPrice)));
-    
 
     const state = {
         labels: props.data.map(one => one.symbol),
@@ -45,10 +45,12 @@ export const CryptoChart = (props: Props) => {
         ]
     }
 
-    return <div>
+    return <div className="container">
         <Line
             data={state}
             options={{
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     title: {
                         display: true,

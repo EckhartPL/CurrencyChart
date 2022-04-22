@@ -8,21 +8,23 @@ export const CryptoPrice = () => {
     const [pair, setPair] = useState<string>('');
 
     useEffect(() => {
-        (async () => {
+        const interval = setInterval(async () => {
             const res = await fetch('https://api2.binance.com/api/v3/ticker/24hr');
             setData(await res.json());
-        })();
+            console.log('test');
+        }, 10000)
+        return () => clearInterval(interval);
     }, [])
 
     if (data === null) {
-        return <p>Loading...</p>
+        return <p style={{ fontSize: '40px', color: 'gray' }}>Loading cryptocurrencies.</p>
     } else {
         return <>
             <label>
-                <p>Choose cryptocurrency:</p>
+                <p style={{ fontSize: '20px' }}>Choose cryptocurrency:</p>
                 <select
-                value={pair}
-                onChange={e => setPair(e.target.value)}
+                    value={pair}
+                    onChange={e => setPair(e.target.value)}
                 >
                     {
                         data
@@ -31,10 +33,10 @@ export const CryptoPrice = () => {
                 </select>
             </label>
             {
-                pair && <CryptoPriceOfOnePair onePair={data.find(one => one.symbol === pair) as CryptoData}/>
+                pair && <CryptoPriceOfOnePair onePair={data.find(one => one.symbol === pair) as CryptoData} />
             }
             {
-                <CryptoChart data={data}/>
+                <CryptoChart data={data} />
             }
         </>
     }
